@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TopUp Hub</title>
+<title>Telecom Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
@@ -25,7 +25,7 @@ body{
 header{
   padding:20px;
   text-align:center;
-  font-size:24px;
+  font-size:40px;
   font-weight:600;
   color:#4f46e5;
 }
@@ -52,6 +52,7 @@ header{
   color:#fff;
   border:none;
   border-radius:30px;
+  cursor:pointer;
 }
 
 /* SERVICES */
@@ -124,7 +125,7 @@ header{
   color:#555;
 }
 
-/* ANIMATION */
+/* SCROLL ANIMATION */
 .reveal{
   opacity:0;
   transform:translateY(50px);
@@ -143,20 +144,44 @@ footer{
   text-align:center;
   padding:30px;
 }
+
+/* 🔝 TOP NOTIFICATION */
+.notify{
+  position:fixed;
+  top:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:14px 25px;
+  border-radius:12px;
+  font-size:14px;
+  transition:0.5s ease;
+  z-index:999;
+}
+
+.notify.show{
+  top:20px;
+}
 </style>
 </head>
 
 <body>
 
-<header>⚡ TopUp Hub</header>
+<header>Telecom Store</header>
 
 <section class="hero reveal">
-  <h1>বিল পে করুন</h1>
+  <h1>Smart Recharge & Payment Solution</h1>
   <p>আপনার মোবাইল রিচার্জ, ড্রাইভ অফার এবং সকল ধরনের ইউটিলিটি বিল পরিশোধ করুন এক ক্লিকেই।</p>
-  <button class="btn">অ্যাপ ডাউনলোড</button>
+
+  <!-- 🔥 DOWNLOAD BUTTON -->
+  <button class="btn" onclick="downloadApp()">অ্যাপ ডাউনলোড</button>
 </section>
 
-<!-- 4 SERVICES -->
+<!-- 🔝 NOTIFICATION -->
+<div class="notify" id="notify"></div>
+
+<!-- SERVICES -->
 <section class="services">
 
   <div class="card reveal">
@@ -206,29 +231,46 @@ footer{
   </div>
 
   <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=2">
+    <img src="https://i.pravatar.cc/100?img=5">
     <div class="review-text">
-      <h4>Karim</h4>
-      <p>অনেক safe এবং easy ব্যবহার 👍</p>
+      <h4>Sumaiya</h4>
+      <p>UI অনেক সুন্দর ❤️</p>
     </div>
   </div>
 
   <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=3">
+    <img src="https://i.pravatar.cc/100?img=12">
     <div class="review-text">
-      <h4>Sumaiya</h4>
-      <p>UI খুব সুন্দর ❤️</p>
+      <h4>Karim</h4>
+      <p>একদম safe 👍</p>
+    </div>
+  </div>
+
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/100?img=32">
+    <div class="review-text">
+      <h4>Nusrat</h4>
+      <p>Offers গুলো অনেক ভালো 😍</p>
+    </div>
+  </div>
+
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/100?img=45">
+    <div class="review-text">
+      <h4>Hasan</h4>
+      <p>Fast service 🔥</p>
     </div>
   </div>
 
 </section>
 
 <footer>
-  <h2>TopUp Hub</h2>
+  <h2>Telecom Store</h2>
   <p>© 2026 All Rights Reserved</p>
 </footer>
 
 <script>
+// scroll animation
 function reveal(){
   const reveals = document.querySelectorAll(".reveal");
 
@@ -241,6 +283,24 @@ function reveal(){
 
 window.addEventListener("scroll", reveal);
 reveal();
+
+// 🔥 DOWNLOAD FUNCTION (APK attach here)
+function downloadApp(){
+  const notify = document.getElementById("notify");
+
+  notify.innerText = "অ্যাপটি ডাউনলোড হচ্ছে, Chrome browser এর download option এ গিয়ে চেক করুন";
+  notify.classList.add("show");
+
+  // 👇👇 এই লাইনে APK attach করা আছে
+  const link = document.createElement("a");
+  link.href = "/Telestore.apk";   // 👉 এখানে APK file name বসবে
+  link.download = "TelecomStore.apk";
+  link.click();
+
+  setTimeout(()=>{
+    notify.classList.remove("show");
+  },4000);
+}
 </script>
 
 </body>
