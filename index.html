@@ -1,307 +1,458 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Telecom Store</title>
+    <title>Telecom Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
-}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-body{
-  background:#f6f8ff;
-  color:#222;
-}
+      body {
+        background: #f6f8ff;
+        color: #222;
+      }
 
-/* HEADER */
-header{
-  padding:20px;
-  text-align:center;
-  font-size:40px;
-  font-weight:600;
-  color:#4f46e5;
-}
+      /* NAVBAR */
+      nav {
+        background: #fff;
+        padding: 10px 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
 
-/* HERO */
-.hero{
-  padding:50px 20px;
-}
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
 
-.hero h1{
-  font-size:32px;
-  margin-bottom:10px;
-}
+      .logo {
+        flex: 0 0 auto;
+        font-size: 24px;
+        font-weight: 600;
+        color: #4f46e5;
+      }
 
-.hero p{
-  font-size:18px;
-  color:#555;
-  margin-bottom:25px;
-}
+      .nav-links {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 30px;
+      }
 
-.btn{
-  padding:14px 30px;
-  background:#111;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-}
+      .nav-links a {
+        text-decoration: none;
+        color: #222;
+        font-weight: 500;
+        transition: 0.3s;
+      }
 
-/* SERVICES */
-.services{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  padding:25px;
-}
+      .nav-links a:hover {
+        color: #4f46e5;
+      }
 
-.card{
-  background:#fff;
-  padding:25px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.07);
-  transition:0.3s;
-}
+      .hamburger {
+        flex: 0 0 auto;
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        margin-left: auto;
+      }
 
-.card:hover{
-  transform:translateY(-8px);
-}
+      .bar {
+        width: 25px;
+        height: 3px;
+        background: #222;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
 
-.icon{
-  font-size:35px;
-  margin-bottom:10px;
-}
+      /* HERO */
+      .hero {
+        padding: 50px 20px;
+      }
 
-/* FEATURE */
-.section{
-  padding:25px;
-}
+      .hero h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
 
-.feature{
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:10px;
-  text-align:center;
-}
+      .hero p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 25px;
+      }
 
-/* REVIEW */
-.reviews{
-  padding:25px;
-}
+      .btn {
+        padding: 14px 30px;
+        background: #111;
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+      }
 
-.review-card{
-  display:flex;
-  gap:15px;
-  align-items:center;
-  background:#fff;
-  padding:15px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
+      /* SERVICES */
+      .services {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 25px;
+      }
 
-.review-card img{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-}
+      .card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+        transition: 0.3s;
+      }
 
-.review-text h4{
-  margin-bottom:5px;
-}
+      .card:hover {
+        transform: translateY(-8px);
+      }
 
-.review-text p{
-  font-size:14px;
-  color:#555;
-}
+      .favicon-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 10px;
+      }
 
-/* SCROLL ANIMATION */
-.reveal{
-  opacity:0;
-  transform:translateY(50px);
-  transition:0.7s;
-}
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
 
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
+      /* FEATURE */
+      .section {
+        padding: 25px;
+      }
 
-/* FOOTER */
-footer{
-  background:#111;
-  color:#ccc;
-  text-align:center;
-  padding:30px;
-}
+      .feature {
+        background: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
 
-/* 🔝 TOP NOTIFICATION */
-.notify{
-  position:fixed;
-  top:-100px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#111;
-  color:#fff;
-  padding:14px 25px;
-  border-radius:12px;
-  font-size:14px;
-  transition:0.5s ease;
-  z-index:999;
-}
+      /* REVIEW */
+      .reviews {
+        padding: 25px;
+      }
 
-.notify.show{
-  top:20px;
-}
-</style>
-</head>
+      .review-card {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        background: #fff;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
 
-<body>
+      .review-card img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
 
-<header>Telecom Store</header>
+      .review-text h4 {
+        margin-bottom: 5px;
+      }
 
-<section class="hero reveal">
-  <h1>Smart Recharge & Payment Solution</h1>
-  <p>আপনার মোবাইল রিচার্জ, ড্রাইভ অফার এবং সকল ধরনের ইউটিলিটি বিল পরিশোধ করুন এক ক্লিকেই।</p>
+      .review-text p {
+        font-size: 14px;
+        color: #555;
+      }
 
-  <!-- 🔥 DOWNLOAD BUTTON -->
-  <button class="btn" onclick="downloadApp()">অ্যাপ ডাউনলোড</button>
-</section>
+      /* SCROLL ANIMATION */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 0.7s;
+      }
 
-<!-- 🔝 NOTIFICATION -->
-<div class="notify" id="notify"></div>
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-<!-- SERVICES -->
-<section class="services">
+      /* FOOTER */
+      footer {
+        background: #111;
+        color: #ccc;
+        text-align: center;
+        padding: 30px;
+      }
 
-  <div class="card reveal">
-    <div class="icon">📱</div>
-    <h3>Mobile Recharge</h3>
-    <p>যেকোনো সিমে রিচার্জ</p>
-  </div>
+      /* 🔝 TOP NOTIFICATION */
+      .notify {
+        position: fixed;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
+        color: #fff;
+        padding: 14px 25px;
+        border-radius: 12px;
+        font-size: 14px;
+        transition: 0.5s ease;
+        z-index: 999;
+      }
 
-  <div class="card reveal">
-    <div class="icon">🎁</div>
-    <h3>Drive Offers</h3>
-    <p>সেরা অফার</p>
-  </div>
+      .notify.show {
+        top: 20px;
+      }
 
-  <div class="card reveal">
-    <div class="icon">💡</div>
-    <h3>Utility Bills</h3>
-    <p>বিদ্যুৎ ও গ্যাস</p>
-  </div>
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background: #fff;
+          flex-direction: column;
+          gap: 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-  <div class="card reveal">
-    <div class="icon">💳</div>
-    <h3>Payment</h3>
-    <p>সহজ পেমেন্ট সিস্টেম</p>
-  </div>
+        .nav-links.active {
+          display: flex;
+        }
 
-</section>
+        .nav-links li {
+          width: 100%;
+          padding: 12px 20px;
+          text-align: center;
+        }
 
-<section class="section reveal">
-  <h2>কেন আমাদের বেছে নিবেন?</h2>
+        .hamburger {
+          display: flex;
+          margin-left: auto;
+        }
 
-  <div class="feature">🛡️ ১০০% নিরাপদ</div>
-  <div class="feature">⚡ দ্রুত লেনদেন</div>
-  <div class="feature">🎧 ২৪/৭ সাপোর্ট</div>
-</section>
+        .hero h1 {
+          font-size: 28px;
+        }
 
-<!-- REVIEW -->
-<section class="reviews reveal">
-  <h2>⭐ ইউজার রিভিউ</h2>
+        .hero p {
+          font-size: 16px;
+        }
 
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=1">
-    <div class="review-text">
-      <h4>Rahim</h4>
-      <p>অসাধারণ অ্যাপ! খুব দ্রুত রিচার্জ হয় 🔥</p>
-    </div>
-  </div>
+        .services {
+          grid-template-columns: 1fr;
+        }
 
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=5">
-    <div class="review-text">
-      <h4>Sumaiya</h4>
-      <p>UI অনেক সুন্দর ❤️</p>
-    </div>
-  </div>
+        .review-card {
+          flex-direction: column;
+          text-align: center;
+        }
 
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=12">
-    <div class="review-text">
-      <h4>Karim</h4>
-      <p>একদম safe 👍</p>
-    </div>
-  </div>
+        .section h2,
+        .reviews h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
 
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=32">
-    <div class="review-text">
-      <h4>Nusrat</h4>
-      <p>Offers গুলো অনেক ভালো 😍</p>
-    </div>
-  </div>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">Telecom Store</div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </nav>
 
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/100?img=45">
-    <div class="review-text">
-      <h4>Hasan</h4>
-      <p>Fast service 🔥</p>
-    </div>
-  </div>
+    <section class="hero reveal" id="hero">
+      <h1>Smart Recharge & Payment Solution</h1>
+      <p>
+        আপনার মোবাইল রিচার্জ, ড্রাইভ অফার এবং সকল ধরনের ইউটিলিটি বিল পরিশোধ করুন
+        এক ক্লিকেই।
+      </p>
 
-</section>
+      <!-- 🔥 DOWNLOAD BUTTON -->
+      <button class="btn" onclick="downloadApp()">অ্যাপ ডাউনলোড</button>
+    </section>
 
-<footer>
-  <h2>Telecom Store</h2>
-  <p>© 2026 All Rights Reserved</p>
-</footer>
+    <!-- 🔝 NOTIFICATION -->
+    <div class="notify" id="notify"></div>
 
-<script>
-// scroll animation
-function reveal(){
-  const reveals = document.querySelectorAll(".reveal");
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="card reveal">
+        <img src="mobile.svg" alt="Mobile recharge icon" class="favicon-icon" />
+        <h3>Mobile Recharge</h3>
+        <p>যেকোনো সিমে রিচার্জ</p>
+      </div>
 
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight - 100){
-      el.classList.add("active");
-    }
-  });
-}
+      <div class="card reveal">
+        <img src="offer.svg" alt="Drive offers icon" class="favicon-icon" />
+        <h3>Drive Offers</h3>
+        <p>সেরা অফার</p>
+      </div>
 
-window.addEventListener("scroll", reveal);
-reveal();
+      <div class="card reveal">
+        <img src="bills.svg" alt="Utility bills icon" class="favicon-icon" />
+        <h3>Utility Bills</h3>
+        <p>বিদ্যুৎ ও গ্যাস</p>
+      </div>
 
-// 🔥 DOWNLOAD FUNCTION (APK attach here)
-function downloadApp(){
-  const notify = document.getElementById("notify");
+      <div class="card reveal">
+        <img src="payment.svg" alt="Payment icon" class="favicon-icon" />
+        <h3>Payment</h3>
+        <p>সহজ পেমেন্ট সিস্টেম</p>
+      </div>
+    </section>
 
-  notify.innerText = "অ্যাপটি ডাউনলোড হচ্ছে, Chrome browser এর download option এ গিয়ে চেক করুন";
-  notify.classList.add("show");
+    <section class="section reveal" id="features">
+      <h2>কেন আমাদের বেছে নিবেন?</h2>
 
-  // 👇👇 এই লাইনে APK attach করা আছে
-  const link = document.createElement("a");
-  link.href = "/Telestore.apk";   // 👉 এখানে APK file name বসবে
-  link.download = "TelecomStore.apk";
-  link.click();
+      <div class="feature">
+        <img src="shield.svg" alt="Safe icon" class="feature-icon" />১০০% নিরাপদ
+      </div>
+      <div class="feature">
+        <img
+          src="fast.svg"
+          alt="Fast transaction icon"
+          class="feature-icon"
+        />দ্রুত লেনদেন
+      </div>
+      <div class="feature">
+        <img src="support.svg" alt="Support icon" class="feature-icon" />২৪/৭
+        সাপোর্ট
+      </div>
+    </section>
 
-  setTimeout(()=>{
-    notify.classList.remove("show");
-  },4000);
-}
-</script>
+    <!-- REVIEW -->
+    <section class="reviews reveal" id="reviews">
+      <h2>
+        <img src="star.svg" alt="Review icon" class="feature-icon" />ইউজার রিভিউ
+      </h2>
 
-</body>
+      <div class="review-card">
+        <img src="assets/rahim.webp" />
+        <div class="review-text">
+          <h4>Rahim</h4>
+          <p>অসাধারণ অ্যাপ! খুব দ্রুত রিচার্জ হয় 🔥</p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <img src="assets/mina.jpg" />
+        <div class="review-text">
+          <h4>Sumaiya</h4>
+          <p>UI অনেক সুন্দর ❤️</p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <img src="assets/rishad.jpeg" />
+        <div class="review-text">
+          <h4>Karim</h4>
+          <p>একদম safe 👍</p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <img src="assets/tonmoy.webp" />
+        <div class="review-text">
+          <h4>Tonmoy</h4>
+          <p>Offers গুলো অনেক ভালো 😍</p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <img src="assets/hasan.webp" />
+        <div class="review-text">
+          <h4>Hasan</h4>
+          <p>Fast service 🔥</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h2>Telecom Store</h2>
+      <p>© 2026 All Rights Reserved</p>
+    </footer>
+
+    <script>
+      // scroll animation
+      function reveal() {
+        const reveals = document.querySelectorAll(".reveal");
+
+        reveals.forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+
+      // hamburger menu
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+
+      // 🔥 DOWNLOAD FUNCTION (APK attach here)
+      function downloadApp() {
+        const notify = document.getElementById("notify");
+
+        notify.innerText =
+          "অ্যাপটি ডাউনলোড হচ্ছে, Chrome browser এর download option এ গিয়ে চেক করুন";
+        notify.classList.add("show");
+
+        // 👇👇 এই লাইনে APK attach করা আছে
+        const link = document.createElement("a");
+        link.href = "/Telestore.apk"; // 👉 এখানে APK file name বসবে
+        link.download = "TelecomStore.apk";
+        link.click();
+
+        setTimeout(() => {
+          notify.classList.remove("show");
+        }, 4000);
+      }
+    </script>
+  </body>
 </html>
